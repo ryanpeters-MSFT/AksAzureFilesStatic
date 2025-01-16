@@ -1,6 +1,6 @@
-# AKS using Azure Files
+# AKS using Azure Files (Static)
 
-This repository shows examples of configuring and accessing Azure Files from AKS using both Access Keys and Managed Identity. 
+This repository shows examples of configuring and accessing a static Azure Files share from AKS using both Access Keys and Managed Identity. The setup script will create a storage account and a SMB share for reference by a `PersistentVolume`. 
 
 | Mode | Description | PV Characteristics |
 | - | - | - |
