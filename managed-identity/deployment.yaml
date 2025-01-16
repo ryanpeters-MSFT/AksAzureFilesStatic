@@ -1,0 +1,25 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - image: nginx
+          name: nginx
+          resources: {}
+          volumeMounts:
+            - name: data
+              mountPath: /filedata
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: files-pvc

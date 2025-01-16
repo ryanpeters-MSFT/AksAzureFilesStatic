@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: files-pv
+  annotations:
+    pv.kubernetes.io/provisioned-by: file.csi.azure.com
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: azurefile-csi
+  csi:
+    driver: file.csi.azure.com
+    readOnly: false
+    volumeHandle: azuredfiles-pv
+    volumeAttributes:
+      resourceGroup: rg-aks-files-mi
+      storageAccount: storageaccount011625
+      shareName: data
