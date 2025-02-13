@@ -19,3 +19,6 @@ az aks get-credentials -g $GROUP -n $CLUSTER --overwrite-existing
 # get the access key and create the secret
 $STORAGE_KEY = az storage account keys list -g $GROUP --account-name $STORAGE_ACCOUNT --query "[0].value" -o tsv
 kubectl create secret generic azure-secret --from-literal=azurestorageaccountname=$STORAGE_ACCOUNT --from-literal=azurestorageaccountkey=$STORAGE_KEY
+
+# apply scripts
+kubectl apply -f .\pv.yaml -f .\pvc.yaml -f .\deployment.yaml

@@ -13,10 +13,8 @@ Deployment scripts are in both the [`access-keys`](./access-keys/) and [`managed
 
 ```powershell
 # invoke the setup script (change to appropriate directory)
+# NOTE: the script will apply the deployment manifests
 .\setup.ps1
-
-# apply scripts
-kubectl apply -f .\pv.yaml -f .\pvc.yaml -f .\deployment.yaml
 ```
 
 This will create a deployment with 2 replicas (any number can be used) and mounts the Azure File share at the path `/filedata` inside of the pods. You can then `exec` into the pod and view/write/read content from this folder. 
